@@ -1,5 +1,6 @@
 package com.android.compose_start
 
+import android.net.ipsec.ike.TunnelModeChildSessionParams.ConfigRequestIpv4Netmask
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -37,9 +38,14 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun MyApp(modifier: Modifier = Modifier) {
-    Surface(modifier, color = MaterialTheme.colorScheme.background) {
-        Greeting("Android")
+fun MyApp(
+    modifier: Modifier = Modifier,
+    names: List<String> = listOf("World", "Compose")
+) {
+    Column(modifier) {
+        for (name in names) {
+            Greeting(name = name)
+        }
     }
 }
 
@@ -47,6 +53,6 @@ fun MyApp(modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     Compose_startTheme {
-        Greeting("Android")
+        MyApp()
     }
 }
