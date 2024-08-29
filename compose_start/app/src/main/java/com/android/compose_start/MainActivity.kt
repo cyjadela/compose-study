@@ -41,6 +41,13 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     }
 }
 
+@Composable
+fun MyApp(modifier: Modifier = Modifier) {
+    Surface(modifier, color = MaterialTheme.colorScheme.background) {
+        Greeting("Android")
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
