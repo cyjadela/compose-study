@@ -78,7 +78,7 @@ fun MyApp(modifier: Modifier = Modifier) {
 
     Surface(modifier) {
         if (shouldShowOnboarding) {
-            OnboardingScreen( /* TODO */)
+            OnboardingScreen( onContinueClicked = { shouldShowOnboarding = false })
         } else {
             Greetings()
         }
@@ -123,7 +123,10 @@ fun GreetingPreview() {
 
 // 온보딩 화면
 @Composable
-fun OnboardingScreen(modifier: Modifier = Modifier) {
+fun OnboardingScreen(
+    onContinueClicked: () -> Unit,
+    modifier: Modifier = Modifier
+) {
 
     var shouldShowOnboarding by remember { mutableStateOf(true) }
 
@@ -135,7 +138,7 @@ fun OnboardingScreen(modifier: Modifier = Modifier) {
         Text("Welcome to the Basics Codelab!")
         Button(
             modifier = Modifier.padding(vertical = 24.dp),
-            onClick = { shouldShowOnboarding = false }
+            onClick = onContinueClicked
         ) {
             Text("Continue")
         }
@@ -146,6 +149,6 @@ fun OnboardingScreen(modifier: Modifier = Modifier) {
 @Composable
 fun OnboardingPreview() {
     Compose_startTheme {
-        OnboardingScreen()
+        OnboardingScreen(onContinueClicked = {})
     }
 }
