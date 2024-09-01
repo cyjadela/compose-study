@@ -59,8 +59,34 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     }
 }
 
+//@Composable
+//fun MyApp(
+//    modifier: Modifier = Modifier,
+//    names: List<String> = listOf("World", "Compose")
+//) {
+//    Column(modifier = modifier.padding(vertical = 4.dp)) {
+//        for (name in names) {
+//            Greeting(name = name)
+//        }
+//    }
+//}
+
 @Composable
-fun MyApp(
+fun MyApp(modifier: Modifier = Modifier) {
+
+    var shouldShowOnboarding by remember { mutableStateOf(true)}
+
+    Surface(modifier) {
+        if (shouldShowOnboarding) {
+            OnboardingScreen( /* TODO */)
+        } else {
+            Greetings()
+        }
+    }
+}
+
+@Composable
+private fun Greetings(
     modifier: Modifier = Modifier,
     names: List<String> = listOf("World", "Compose")
 ) {
@@ -68,6 +94,22 @@ fun MyApp(
         for (name in names) {
             Greeting(name = name)
         }
+    }
+}
+
+@Preview(showBackground = true, widthDp = 320)
+@Composable
+fun GreetingsPreview() {
+    Compose_startTheme {
+        Greetings()
+    }
+}
+
+@Preview
+@Composable
+fun MyAppPreview() {
+    Compose_startTheme {
+        MyApp(Modifier.fillMaxSize())
     }
 }
 
