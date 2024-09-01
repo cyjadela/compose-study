@@ -37,9 +37,9 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    val expanded = remember { mutableStateOf(false) }
+    var expanded by remember { mutableStateOf(false) }
 
-    val extraPadding = if (expanded.value) 48.dp else 0.dp
+    val extraPadding = if (expanded) 48.dp else 0.dp
 
     Surface(color = MaterialTheme.colorScheme.primary,
     modifier = modifier.padding(vertical = 4.dp, horizontal = 8.dp)) {
@@ -51,9 +51,9 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
                 Text(text = name)
             }
             ElevatedButton(onClick = {
-                expanded.value = !expanded.value
+                expanded = !expanded
             }) {
-                Text(if (expanded.value) "Show less" else "Show more")
+                Text(if (expanded) "Show less" else "Show more")
             }
         }
     }
