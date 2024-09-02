@@ -26,6 +26,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.android.compose_start.ui.theme.Compose_startTheme
@@ -60,7 +61,9 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
                 .weight(1f)
                 .padding(bottom = extraPadding.coerceAtLeast(0.dp))) { // padding이 음수가 되면 앱이 다운될 수 있으므로 0으로 설정
                 Text(text = "Hello ")
-                Text(text = name)
+                Text(text = name, style = MaterialTheme.typography.headlineMedium.copy(
+                    fontWeight = FontWeight.ExtraBold
+                ))
             }
             ElevatedButton(onClick = {
                 expanded = !expanded
