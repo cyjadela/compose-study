@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -63,12 +64,17 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
                 .padding(bottom = extraPadding.coerceAtLeast(0.dp))) { // padding이 음수가 되면 앱이 다운될 수 있으므로 0으로 설정
                 Text(text = "Hello ")
                 Text(text = name, style = MaterialTheme.typography.headlineMedium.copy(
-                    fontWeight = FontWeight.ExtraBold
+                    fontWeight = FontWeight.ExtraBold,
+                    color = MaterialTheme.colorScheme.onPrimary
                 ))
             }
             ElevatedButton(onClick = {
                 expanded = !expanded
-            }) {
+            },
+                colors = ButtonDefaults.elevatedButtonColors(
+                    containerColor = MaterialTheme.colorScheme.onPrimary
+                )
+            ) {
                 Text(if (expanded) "Show less" else "Show more")
             }
         }
