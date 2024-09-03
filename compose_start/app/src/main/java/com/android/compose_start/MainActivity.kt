@@ -166,8 +166,6 @@ fun OnboardingScreen(
     modifier: Modifier = Modifier
 ) {
 
-    var shouldShowOnboarding by rememberSaveable { mutableStateOf(true) }
-
     Column(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
