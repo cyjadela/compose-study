@@ -106,7 +106,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun MyApp(modifier: Modifier = Modifier) {
 
-    var shouldShowOnboarding by remember { mutableStateOf(true)}
+    var shouldShowOnboarding by rememberSaveable { mutableStateOf(true)}
 
     Surface(modifier) {
         if (shouldShowOnboarding) {
